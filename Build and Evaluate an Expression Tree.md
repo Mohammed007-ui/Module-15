@@ -22,30 +22,55 @@ To write a Python program to build and evaluate the given Expression tree.
 ## PROGRAM:
 
 ```
-from binarytree import Node,build
-def _build_bst_from_sorted_values(sorted_values):
-    if len(sorted_values) == 0:
-        return None
-    mid_index = len(sorted_values) // 2
-    root = Node(sorted_values[mid_index])
-    root.left = _build_bst_from_sorted_values(sorted_values[:mid_index])
-    root.right=_build_bst_from_sorted_values(sorted_values[mid_index + 1 :])
-    return (root)
-    
-x=[18,4,20,13,70]
-bt=build(x)
-#print('Binary tree :',bt.levelorder)
-bst=_build_bst_from_sorted_values(sorted(x))
-#print('Binary search Tree',bst.levelorder)
-#print('Is Binary search tree?',bst.is_bst)
-print("Binary tree : [Node(18), Node(4), Node(20), Node(13), Node(70)]")
-print("Binary Search Tree [Node(18), Node(13), Node(70), Node(4), Node(20)]")
-print("Is Binary search tree? True")
+class Node:
+    def __init__(self, value):
+        self.value = value
+        self.left = None
+        self.right = None
+
+def is_operator(c):
+    return c in ['+', '-', '*', '/']
+
+def evaluate(root):
+    if root is None:
+        return 0
+
+    # If it's a leaf node (operand), return its value
+    if not is_operator(root.value):
+        return float(root.value)
+
+    # Evaluate left and right subtrees
+    left_val = evaluate(root.left)
+    right_val = evaluate(root.right)
+
+    # Apply the operator
+    if root.value == '+':
+        return left_val + right_val
+    elif root.value == '-':
+        return left_val - right_val
+    elif root.value == '*':
+        return left_val * right_val
+    elif root.value == '/':
+        return left_val / right_val
+
+# Build the expression tree for: (3 + ((5 + 9) * 2))
+root = Node('+')
+root.left = Node('3')
+root.right = Node('*')
+root.right.left = Node('+')
+root.right.left.left = Node('5')
+root.right.left.right = Node('9')
+root.right.right = Node('2')
+
+# Evaluate the tree
+result = evaluate(root)
+print("Result of the Expression Tree:", result)
+
 ```
 
 ## OUTPUT:
 
-![image](https://github.com/user-attachments/assets/947ab99f-3cdf-45e9-a5cd-566145937dde)
+![image](https://github.com/user-attachments/assets/aa0c8320-15b1-425f-975c-b0d654136d0d)
 
 
 ## RESULT:
