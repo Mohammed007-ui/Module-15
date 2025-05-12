@@ -56,10 +56,10 @@ display(t1)
 ```
 
 ## OUTPUT
-```
+
 ![image](https://github.com/user-attachments/assets/0f08944a-050f-4357-8986-ddfe03806b2a)
 
-```
+
 
 ## RESULT
 Successfully wrote a Python program to build a heap tree using appropriate Python package and function.
