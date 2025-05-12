@@ -19,43 +19,40 @@ To write a Python program to build the given expression tree and print the inord
 ## PROGRAM:
 
 ```
-from binarytree import Node
+class Node:
+    def __init__(self, value):
+        self.value = value
+        self.left = None
+        self.right = None
 
-def _build_bst_from_sorted_values(sorted_values):
-    
-    if len(sorted_values)==0:
-        return None
-    mid_index = len(sorted_values)//2
-    root=Node(sorted_values[mid_index])
-    root.left=_build_bst_from_sorted_values(sorted_values[:mid_index])
-    root.right=_build_bst_from_sorted_values(sorted_values[mid_index+1:])
-    return root
+# Build the expression tree manually: ((3 + 5) * (6 - 2))
+root = Node('*')
+root.left = Node('+')
+root.right = Node('-')
+root.left.left = Node('3')
+root.left.right = Node('5')
+root.right.left = Node('6')
+root.right.right = Node('2')
 
-def left_subtree(l):
-    print("Left Subtree : ")
-    for i in l[1].values:
-        print(i,"-->",end="")
-    return 
+def inorder(node):
+    if node is None:
+        return []
+    return inorder(node.left) + [node.value] + inorder(node.right)
 
+def postorder(node):
+    if node is None:
+        return []
+    return postorder(node.left) + postorder(node.right) + [node.value]
 
-a=[]
-size=int(input())
-for i in range(0,size):
-    val=int(input())
-    a.append(val)
-x=sorted(a)
+print("Inorder Traversal: ", ' '.join(inorder(root)))
+print("Postorder Traversal: ", ' '.join(postorder(root)))
 
-l=_build_bst_from_sorted_values(x)
-print("Postorder :",l.postorder)
-left_subtree(l)
-print("\nIs this a Binary Search Tree? ",l.is_bst)
 
 ```
 
 ## OUTPUT
 
-![image](https://github.com/user-attachments/assets/4e9f4c06-b585-4391-8a82-e22ffa66818b)
-
+![image](https://github.com/user-attachments/assets/c4088e3f-6c54-49eb-8c58-24d387f5af9e)
 
 
 ## RESULT
