@@ -19,11 +19,47 @@ To write a Python program to build a heap tree using appropriate Python package 
 ## PROGRAM:
 
 ```
-WRITE YOUR CODE
+from binarytree import Node
+def _build_bst_from_sorted_values(sorted_values):
+    
+    if len(sorted_values) == 0:
+        return None
+    mid_index = len(sorted_values) // 2
+    root = Node(sorted_values[mid_index])
+    root.left = _build_bst_from_sorted_values(sorted_values[:mid_index])
+    root.right = _build_bst_from_sorted_values(sorted_values[mid_index + 1 :])  
+    return (root)
+
+def del_BST(val):
+  global x
+  if val in x:
+    x.remove(val)
+    tree=_build_bst_from_sorted_values(sorted(x))
+  else:
+    return False
+  return tree
+
+def display(T):
+  for i in T.values:
+    print(i,"-->",end="")
+
+x=[3,1,4,2]
+print("BST before deletion: ")
+t=_build_bst_from_sorted_values(sorted(x))
+display(t)
+s=int(input())
+print("\nBST after deletion: ")
+t1=del_BST(s)
+display(t1)
+
+
 ```
 
 ## OUTPUT
-```
-```
+
+![image](https://github.com/user-attachments/assets/3dbfd262-42a1-42fa-8007-5f6ce04593e4)
+
+
 
 ## RESULT
+Successfully wrote a Python program to build a heap tree using appropriate Python package and function.
