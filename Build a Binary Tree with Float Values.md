@@ -47,10 +47,9 @@ preorder(root)
 ```
 
 ## OUTPUT
-```
+
 ![image](https://github.com/user-attachments/assets/72fecc5e-f340-4e5c-8bf4-b1379b258cd9)
 
-```
 
 ## RESULT
 The program successfully builds a binary tree with float values for the root and its left and right children. The preorder traversal displays the values in the expected order.
