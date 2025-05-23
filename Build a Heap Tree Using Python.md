@@ -19,11 +19,25 @@ To write a Python program to build a heap tree using appropriate Python package 
 ## PROGRAM:
 
 ```
-WRITE YOUR CODE
+import heapq
+
+def heaptree(H):
+    heapq.heapify(H)  # transforms list H into a min-heap in-place
+    print("Heap tree:", H)
+
+# Example list of float values
+H = [3.2, 1.5, 4.8, 2.9, 7.1, 0.5]
+
+print("Original list:", H)
+heaptree(H)
+
 ```
 
 ## OUTPUT
-```
-```
+
+![image](https://github.com/user-attachments/assets/4203c58d-7dd6-4062-982c-378f62b3e5a6)
+
 
 ## RESULT
+The program successfully builds a min-heap tree from a list of float values using Python's heapq module. The heapify() function rearranges the list so that the smallest element is at the root, satisfying heap properties.
+
