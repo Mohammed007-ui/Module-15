@@ -47,7 +47,7 @@ print(l.is_bst)
 
 ## OUTPUT
 
-![image](https://github.com/user-attachments/assets/8f44031d-02f8-49c4-8537-efaeab610506)
+![Uploading image.png…]()
 
 
 
